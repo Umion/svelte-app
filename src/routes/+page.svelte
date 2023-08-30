@@ -10,14 +10,20 @@
 	<meta name="description" content="Create character" />
 </svelte:head>
 
-<div class="app">
-	<div class="sidebar">
-		<img src={type1} alt="" />
-		<img src={type2} alt="" />
-		<img src={type3} alt="" />
-	</div>
-	<div class="sidebar" />
-</div>
+<template lang="pug">
+.app
+  .sidebar
+    input#c1(type="radio", name="type" checked)
+    label(for="c1")
+      img(src="{type1}" alt="")
+    input#c2(type="radio", name="type")
+    label(for="c2")
+      img(src="{type2}" alt="")
+    input#c3(type="radio", name="type")
+    label(for="c3")
+      img(src="{type3}" alt="")
+  .sidebar
+</template>
 
 <style>
 	.app {
@@ -40,7 +46,22 @@
 		padding: 0.76rem;
 		border-radius: 0.76rem;
 	}
-	.sidebar img {
+	label img {
 		width: 100%;
+	}
+
+	[type='radio'] {
+		display: none;
+	}
+
+	label {
+		display: block;
+	}
+	label:hover {
+	}
+
+	[type='radio']:checked + label img {
+		fill: cyan;
+		background: red;
 	}
 </style>
